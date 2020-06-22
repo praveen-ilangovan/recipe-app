@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 
-import { Ingredient } from '../shared/models/ingredient.model';
+import { Ingredient } from '../models/ingredient.model';
 
 @Component({
   selector: 'app-ingredients',
