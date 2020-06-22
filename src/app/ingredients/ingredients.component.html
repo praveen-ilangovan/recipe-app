@@ -1,0 +1,9 @@
+<ul class="list-group">
+  <li
+    class="list-group-item"
+    style="width: 100%"
+    *ngFor="let ingredient of ingredients; index as i"
+    (click)="onIngredientClicked(i)">
+    {{ ingredient.name }} <span class="badge">{{ ingredient.amount }}</span>
+  </li>
+</ul>

@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+
+        <div class="row">
+          <div class="col-xs-12">
+            <app-shopping-edit></app-shopping-edit>
+            <hr>
+            <!-- Loop through ingredient list and populate it -->
+            <app-ingredients
+              [ingredients]="getIngredients()"
+              (ingredientSelected)="onIngredientSelected($event)">
+            </app-ingredients>
+          </div>
+        </div>
+
+    </div>
+  </div>
+</div>

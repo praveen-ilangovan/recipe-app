@@ -1,0 +1,112 @@
+<div class="container">
+    <div class="row">
+
+        <div class="col">
+
+          <p class="h4 mb-4">{{ formTitle }}</p>
+
+          <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
+
+            <div class="mb-4">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="nameInputField"
+                  placeholder="Name of the recipe"
+                  formControlName="name">
+                <span
+                    class="help-block"
+                    *ngIf="recipeForm.get('name').invalid && recipeForm.get('name').touched">This is a required field.</span>
+            </div>
+
+            <div class="mb-4">
+                <textarea
+                  class="form-control"
+                  id="descriptionField"
+                  rows="3"
+                  placeholder="Give a brief description"
+                  formControlName="description"></textarea>
+                <span
+                  class="help-block"
+                  *ngIf="recipeForm.get('description').invalid && recipeForm.get('description').touched">This is a required field.</span>
+            </div>
+
+            <input
+              type="text"
+              class="form-control mb-4"
+              id="imageField"
+              placeholder="Recipe image"
+              formControlName="imagePath">
+
+            <img
+                *ngIf="recipeForm.get('imagePath').value"
+                [src]="recipeForm.get('imagePath').value"
+                alt=""
+                width="100%">
+
+            <hr>
+
+            <button
+              type="button"
+              class="btn btn-sm btn-success mb-3"
+              (click)="onAddIngredient()">
+              Add ingredient(s)
+            </button>
+
+            <div *ngFor="let ingredientGroup of getIngredientGroups(); index as i">
+              <ng-container [formGroup]="ingredientGroup">
+                <div class="row mb-4">
+                    <div class="col-7">
+                        <input
+                            type="text"
+                            class="form-control"
+                            placeholder="Name"
+                            formControlName="name"/>
+                    </div>
+                    <div class="col-4">
+                        <input
+                            type="number"
+                            class="form-control"
+                            placeholder="Qty"
+                            min="0"
+                            formControlName="amount"/>
+                    </div>
+                    <div class="col-1">
+                        <button
+                            type="button"
+                            class="close"
+                            aria-label="Close"
+                            (click)="onDeleteIngredient(i)">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+              </ng-container>
+            </div>
+
+            <hr>
+
+            <div class="row">
+                <div class="col-6">
+                    <button
+                      type="submit"
+                      class="btn btn-primary"
+                      [disabled]="recipeForm.invalid">
+                      {{ submitButtonText }}
+                    </button>
+                </div>
+                <div class="col-6">
+                    <button
+                      type="button"
+                      class="btn btn-primary"
+                      *ngIf="editMode"
+                      (click)="onCancel()">
+                      Cancel
+                    </button>
+                </div>
+            </div>
+          </form>
+        </div>
+
+    </div>
+</div>

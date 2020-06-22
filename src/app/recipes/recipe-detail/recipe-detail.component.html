@@ -1,0 +1,65 @@
+<div *ngIf="recipe; else infoText">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1>{{ recipe.name }}</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+        <!-- Image -->
+        <img
+          class="img-responsive"
+          [src]="recipe.imagePath"
+          alt="Recipe name"
+          style="max-width: 100%; object-fit: cover;">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <div ngbDropdown class="d-inline-block">
+        <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Manage Recipe</button>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+          <a
+            ngbDropdownItem
+            style="cursor: pointer"
+            title=""
+            (click)="addToShoppingList()">
+            To Shopping List
+          </a>
+          <a
+            ngbDropdownItem
+            style="cursor: pointer"
+            title=""
+            (click)="onEdit()">Edit Recipe
+          </a>
+          <a
+            ngbDropdownItem
+            style="cursor: pointer"
+            title=""
+            (click)="onDelete()">
+            Delete Recipe
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+      {{ recipe.description }}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+      Ingredients
+      <app-ingredients [ingredients]="recipe.ingredients"></app-ingredients>
+    </div>
+  </div>
+
+</div>
+<ng-template #infoText>
+  <h5>Please select a recipe</h5>
+</ng-template>

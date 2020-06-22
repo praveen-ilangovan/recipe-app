@@ -1,0 +1,93 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <!-- Brand -->
+  <a
+    class="navbar-brand"
+    [routerLink]="['/']">
+    Recipe Book
+  </a>
+
+  <!-- Collapsible Button -->
+  <button
+    class="navbar-toggler"
+    type="button"
+    (click)="collapsed = !collapsed"
+    #collapsibleButton>
+    &#9776;
+  </button>
+
+  <!-- Collapsible content -->
+  <div [ngbCollapse]="collapsed" class="collapse navbar-collapse">
+
+    <ul class="navbar-nav">
+      <!-- Recipes -->
+      <li class="nav-item"
+          routerLinkActive="active"
+          *ngIf="isAuthenticated">
+        <a
+          class="nav-link"
+          [routerLink]="['/recipes']">
+          Recipes
+        </a>
+      </li>
+      <!-- Authenticate -->
+      <li class="nav-item"
+          routerLinkActive="active"
+          *ngIf="!isAuthenticated">
+        <a
+          class="nav-link"
+          [routerLink]="['/auth']">
+          Authenticate
+        </a>
+      </li>
+      <!-- Shopping list -->
+      <li class="nav-item" routerLinkActive="active">
+        <a
+          class="nav-link"
+          [routerLink]="['/shopping']">
+          Shopping List
+        </a>
+      </li>
+    </ul>
+
+    <!-- Right aligned droppable option option -->
+    <ul class="navbar-nav ml-auto">
+      <!-- Logout -->
+      <li
+        class="nav-item"
+        routerLinkActive="active"
+        *ngIf="isAuthenticated">
+        <a
+          class="nav-link"
+          style="cursor: pointer"
+          (click)="onLogout()">
+          Logout
+        </a>
+      </li>
+
+      <li class="nav-item"
+          ngbDropdown
+          *ngIf="isAuthenticated">
+        <a class="nav-link" style="cursor: pointer" ngbDropdownToggle id="navbarDropdown1" role="button">
+          Manage
+        </a>
+        <div ngbDropdownMenu aria-labelledby="navbarDropdown2" class="dropdown-menu dropdown-menu-right">
+          <a
+            ngbDropdownItem
+            style="cursor: pointer"
+            (click)="onSaveDataClicked()">
+            Save Data
+          </a>
+          <a
+            ngbDropdownItem
+            style="cursor: pointer"
+            (click)="onFetchDataClicked()">
+            Fetch Data
+          </a>
+        </div>
+      </li>
+    </ul>
+
+
+  </div>
+
+</nav>
