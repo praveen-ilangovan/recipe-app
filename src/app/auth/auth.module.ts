@@ -3,25 +3,31 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { SharedModule } from '../shared/shared.module';
 
-import { ShoppingListComponent } from './shopping-list.component';
-import { ShoppingEditComponent } from './shopping-edit/shopping-edit.component';
+import { AuthComponent } from './auth.component';
+import { AuthInterceptorService } from './auth-interceptor.service';
+
 
 @NgModule({
   declarations: [
-    ShoppingListComponent,
-    ShoppingEditComponent
+    AuthComponent
   ],
   imports: [
     CommonModule,
     RouterModule.forChild([
-          {path: 'shopping', component:  ShoppingListComponent},
+          {path: 'auth', component:  AuthComponent}
     ]),
     NgbModule,
     FormsModule,
     SharedModule
-  ]
+  ],
+  providers: [{
+                  provide: HTTP_INTERCEPTORS,
+                  useClass: AuthInterceptorService,
+                  multi: true
+              }],
 })
-export class ShoppingListModule { }
+export class AuthModule { }
