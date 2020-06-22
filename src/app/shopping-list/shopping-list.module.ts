@@ -7,6 +7,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ShoppingListComponent } from './shopping-list.component';
 import { ShoppingEditComponent } from './shopping-edit/shopping-edit.component';
 
+const routes: Routes = [
+    {path: 'shopping', component:  ShoppingListComponent},
+];
+
 @NgModule({
   declarations: [
     ShoppingListComponent,
@@ -14,7 +18,9 @@ import { ShoppingEditComponent } from './shopping-edit/shopping-edit.component';
   ],
   imports: [
     CommonModule,
-    RouterModule,
+    RouterModule.forChild([
+          {path: 'shopping', component:  ShoppingListComponent},
+    ]),
     NgbModule,
     FormsModule
   ]
