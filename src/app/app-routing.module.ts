@@ -8,8 +8,8 @@ import { AuthComponent } from './auth/auth.component';
 const routes: Routes = [
     {path: '', component: HomeComponent},
     {path: 'auth', component:  AuthComponent},
-    {path: 'not-found', component: ErrorPageComponent, data: {'message' : 'Page not found'}},
 
+    {path: 'not-found', component: ErrorPageComponent, data: {'message' : 'Page not found'}},
     {path: '**', redirectTo: '/not-found'}
 ];
 
