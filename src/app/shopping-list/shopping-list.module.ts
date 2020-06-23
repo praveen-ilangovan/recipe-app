@@ -17,7 +17,7 @@ import { ShoppingEditComponent } from './shopping-edit/shopping-edit.component';
   imports: [
     CommonModule,
     RouterModule.forChild([
-          {path: 'shopping', component:  ShoppingListComponent},
+          {path: '', component:  ShoppingListComponent},
     ]),
     NgbModule,
     FormsModule,

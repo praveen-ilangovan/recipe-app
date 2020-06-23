@@ -18,7 +18,7 @@ import { AuthInterceptorService } from './auth-interceptor.service';
   imports: [
     CommonModule,
     RouterModule.forChild([
-          {path: 'auth', component:  AuthComponent}
+          {path: '', component:  AuthComponent}
     ]),
     NgbModule,
     FormsModule,

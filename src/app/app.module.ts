@@ -11,9 +11,6 @@ import { ErrorPageComponent } from './error-page/error-page.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import { SharedModule } from './shared/shared.module';
-import { RecipesModule } from './recipes/recipes.module';
-import { ShoppingListModule } from './shopping-list/shopping-list.module';
-import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -27,10 +24,7 @@ import { AuthModule } from './auth/auth.module';
     NgbModule,
     HttpClientModule,
     SharedModule,
-    RecipesModule,
-    ShoppingListModule,
-    AuthModule,
-    AppRoutingModule // This order is important. AppRouting should be defined after the RecipesModule and other custom modules that has routing info
+    AppRoutingModule // This order is important. AppRouting should be defined after the RecipesModule and other custom modules that has routing info if they are not being lazy laoded.
   ],
   providers: [],
   bootstrap: [AppComponent]
