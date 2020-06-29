@@ -1,6 +1,8 @@
 # RecipeApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.7.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.7 as part of [Angular - The Complete Guide](https://www.udemy.com/course/the-complete-guide-to-angular-2/) course.  
+
+The project is hosted in Firebase: [RecipeApp](https://recipes-4ec1a.web.app/)
 
 ## Development server
 
